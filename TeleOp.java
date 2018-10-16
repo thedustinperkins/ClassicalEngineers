@@ -5,6 +5,14 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
+
+/**
+ * 2018 Classical Engineers 8579
+ * Bedford FTC Robotics
+ * Temperance, MI
+ */
+
+
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Basic: Iterative OpMode", group="Iterative Opmode")
 @Disabled
 public class TeleOp extends OpMode
