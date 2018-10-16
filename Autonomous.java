@@ -19,9 +19,9 @@ import java.io.InterruptedIOException;
  * Temperance, MI
  */
 
-@Autonomous(name="EncoderTest", group="Linear Opmode")
+@Autonomous(name="Autonomous", group="Linear Opmode")
 @Disabled
-public class EncoderTest extends LinearOpMode{
+public class Autonomous extends LinearOpMode{
 
     // Declare Motors
     private DcMotor leftDrive = null;
