@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+//import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
@@ -14,12 +14,13 @@ import com.qualcomm.robotcore.util.Range;
 
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Basic: Iterative OpMode", group="Iterative Opmode")
-@Disabled
-public class TeleOp extends OpMode
+public class TeleOp extends LinearOpMode
 {
     // Declare OpMode members.
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
+    private DcMotor wormDrive = null;
+    private DcMotor chainDrive = null;
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -31,8 +32,10 @@ public class TeleOp extends OpMode
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        leftDrive  = hardwareMap.get(DcMotor.class, "leftDrive");
+        rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
+        wormDrive = hardwareMap.get(DcMotor.class, "wormDrive");
+        chainDrive = hardwareMap.get(DcMotor.class, "chainDrive");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -40,7 +43,7 @@ public class TeleOp extends OpMode
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
         // Tell the driver that initialization is complete.
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "Motors Initialized");
     }
 
     /*
@@ -58,6 +61,8 @@ public class TeleOp extends OpMode
         // Setup a variable for each drive wheel to save power level for telemetry
         double leftPower;
         double rightPower;
+        double wormUp;
+        double chainPower;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -73,6 +78,10 @@ public class TeleOp extends OpMode
         // - This requires no math, but it is hard to drive forward slowly and keep straight.
         // leftPower  = -gamepad1.left_stick_y ;
         // rightPower = -gamepad1.right_stick_y ;
+
+        wormUp = gamepad1.left_bumper;
+        wormDn = gamepad1.right_bumper;
+
 
         // Send calculated power to wheels
         leftDrive.setPower(leftPower);
