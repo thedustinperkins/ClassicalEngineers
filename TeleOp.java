@@ -62,7 +62,9 @@ public class TeleOp extends LinearOpMode
         double leftPower;
         double rightPower;
         double wormUp;
-        double chainPower;
+        double wormDn;
+        double chainUp;
+        double chainDn;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -79,9 +81,13 @@ public class TeleOp extends LinearOpMode
         // leftPower  = -gamepad1.left_stick_y ;
         // rightPower = -gamepad1.right_stick_y ;
 
+        //Worm Control
         wormUp = gamepad1.left_bumper;
         wormDn = gamepad1.right_bumper;
 
+        //Extender Control
+        chainUp = gamepad1.left_trigger;
+        chainDn = gamepad1.right_trigger;
 
         // Send calculated power to wheels
         leftDrive.setPower(leftPower);
